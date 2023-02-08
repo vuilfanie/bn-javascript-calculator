@@ -3,7 +3,7 @@
  const display = calculator.querySelector('.calculator__display')
  let isDecimal1 = false
  let isDecimal2 = false
- 
+
  keys.addEventListener("click", event => {
     
     if (!event.target.closest('span')) return
@@ -54,14 +54,19 @@
         const firstNumber = calculator.dataset.firstNumber
         const operator = calculator.dataset.operator
         const secondNumber = displayValue
-        if (secondNumber.includes('.')){
-            isDecimal2 = true
+        if (operator==='divide' && secondNumber==='0'){
+            display.textContent='Seriously?'
         }
-        key.dataset.state = ''
+        else{
+            if (secondNumber.includes('.')){
+                isDecimal2 = true
+            }
+            key.dataset.state = ''
 
-        
-        //calculation
-        display.textContent = calculate(firstNumber, secondNumber, operator)
+            
+            //calculation
+            display.textContent = calculate(firstNumber, secondNumber, operator, key)
+        }
     }
     // backspace button?
     if (type==="backspace"){
@@ -79,7 +84,7 @@
 
 
 
-function calculate(firstNumber, secondNumber, operator){
+function calculate(firstNumber, secondNumber, operator, key){
     let result = 0
     let flag = false
     //checks whether a decimal number or integer
@@ -98,7 +103,7 @@ function calculate(firstNumber, secondNumber, operator){
     if (operator ==="minus") result= firstNumber -  secondNumber
     if (operator ==="multiply") result= firstNumber * secondNumber
     if (operator ==="divide") result= firstNumber / secondNumber
-    
     if(flag) return result.toFixed(2)
     else return result
 }
+
