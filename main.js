@@ -103,17 +103,17 @@ function calculate(firstNumber, secondNumber, operator, key){
     if (operator ==="minus") result= firstNumber -  secondNumber
     if (operator ==="multiply") result= firstNumber * secondNumber
     if (operator ==="divide") result= firstNumber / secondNumber
-    if(flag) return result.toFixed(2)
-    else return result
+    if(flag){
+            return result.toFixed(2)
+        }
+    else{
+        return result
+    }
+
 }
 
-=======
-    if (operator ==="divide") {
-        result= firstNumber / secondNumber
-        result.toFixed(2)
-    }
-    return result
-}
+  
+
 // code to look at
 
 // // Create and initialize variables
