@@ -1,10 +1,9 @@
- const calculator = document.querySelector('.calculator__section')
- const keys = calculator.querySelector('.calculator__keys');
- const display = calculator.querySelector('.calculator__screen')
- 
+ const calculator = document.querySelector('.calculator__app')
+ const keys = calculator.querySelector('.calculator__btn');
+ const display = calculator.querySelector('.calculator__display')
  keys.addEventListener("click", event => {
     
-    if (!event.target.closest('td')) return
+    if (!event.target.closest('span')) return
     const key = event.target;
     const keyValue = key.textContent.trim();
     const displayValue = display.textContent.trim();
