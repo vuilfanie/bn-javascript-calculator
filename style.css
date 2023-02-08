@@ -53,3 +53,7 @@ button {
     color: var(--txt-color);
 }
 
+/*jim or andrew please add style for selected operator&*/
+[data-state ="selected"]{
+    background: blue;
+}

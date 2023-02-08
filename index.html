@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script defer src="./main.js"></script>
+    <script src="./main.js" defer></script>
     <title>Javascript Calculator</title>
 </head>
     <body>
@@ -16,105 +16,105 @@
             <table class="calculator__keys">
                 <tr>
                     <td>
-                        <button>
+                        <button data-type="clearRecent">
                             CE
                         </button>
                     </td>
                     <td>
-                        <button class="clear-btn">
+                        <button data-type="clear">
                             C
                         </button>
                     </td>
                     <td>
-                        <button class="backspace-btn">
+                        <button data-type="backspace">
                             &larr;
                         </button>
                     </td>
                     <td>
-                        <button class="operator-btn">
+                        <button data-op="divide" data-type="operator">
                             /
                         </button>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button class="number-btn">
+                        <button data-type="number">
                             7
                         </button>
                     </td>
                     <td>
-                        <button class="number-btn">
+                        <button data-type="number">
                             8
                         </button>
                     </td>
                     <td>
-                        <button class="number-btn">
+                        <button data-type="number">
                             9
                         </button>
                     </td>
                     <td>
-                        <button class="operator-btn">
+                        <button data-op="multiply" data-type="operator">
                             *
                         </button>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button class="number-btn">
+                        <button data-type="number">
                             4
                         </button>
                     </td>
                     <td>
-                        <button class="number-btn">
+                        <button data-type="number">
                             5
                         </button>
                     </td>
                     <td>
-                        <button class="number-btn">
+                        <button data-type="number">
                             6
                         </button>
                     </td>
                     <td>
-                        <button class="operator-btn">
+                        <button data-op="minus" data-type="operator">
                             -
                         </button>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button class="number-btn">
+                        <button data-type="number">
                             1
                         </button>
                     </td>
                     <td>
-                        <button class="number-btn">
+                        <button data-type="number">
                             2
                         </button>
                     </td>
                     <td>
-                        <button class="number-btn">
+                        <button data-type="number">
                             3
                         </button>
                     </td>
                     <td>
-                        <button class="operator-btn">
+                        <button data-op="plus" data-type="operator">
                             +
                         </button>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <button class="number-btn">
+                        <button data-type="number">
                             0
                         </button>
                     </td>
                     <td>
-                        <button class="decimal-btn">
+                        <button data-type="decimal">
                             .
                         </button>
                     </td>
                     <td>
-                        <button class="equal-btn">
+                        <button data-type="equal">
                             =
                         </button>
                     </td>
