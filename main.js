@@ -65,14 +65,12 @@
 
 
 function calculate(firstNumber, secondNumber, operator){
-    firstNumber = parseInt(firstNumber)
-    secondNumber = parseInt(secondNumber)
+    let result = 0
+    firstNumber = parseFloat(firstNumber)
+    secondNumber = parseFloat(secondNumber)
     if (operator ==="plus") result= firstNumber + secondNumber
     if (operator ==="minus") result= firstNumber -  secondNumber
     if (operator ==="multiply") result= firstNumber * secondNumber
-    if (operator ==="divide") {
-        result= firstNumber / secondNumber
-        result.toFixed(2)
-    }
-    return result
+    if (operator ==="divide") result= firstNumber / secondNumber
+    result = result.toFixed(2)
 }
