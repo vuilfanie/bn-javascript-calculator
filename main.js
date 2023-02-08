@@ -46,6 +46,7 @@
         }
         calculator.dataset.firstNumber = displayValue
         calculator.dataset.operator = key.dataset.op
+        display.textContent = ""
     }
 
     //equal sign?
@@ -54,19 +55,24 @@
         const firstNumber = calculator.dataset.firstNumber
         const operator = calculator.dataset.operator
         const secondNumber = displayValue
-        if (operator==='divide' && secondNumber==='0'){
-            display.textContent='Seriously?'
-        }
-        else{
-            if (secondNumber.includes('.')){
-                isDecimal2 = true
+        if (secondNumber != "" && firstNumber !="0"){
+            if (operator==='divide' && secondNumber==='0'){
+                display.textContent='Seriously?'
             }
-            key.dataset.state = ''
-
+            else{
+                if (secondNumber.includes('.')){
+                    isDecimal2 = true
+                }
+                key.dataset.state = ''
             
-            //calculation
-            display.textContent = calculate(firstNumber, secondNumber, operator, key)
+                        
+                //calculation
+                display.textContent = calculate(firstNumber, secondNumber, operator, key)
+            }  
+        }else{
+            display.textContent="Invalid operation"
         }
+        
     }
     // backspace button?
     if (type==="backspace"){
