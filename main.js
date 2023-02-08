@@ -8,6 +8,7 @@
     
     if (!event.target.closest('span')) return
     const key = event.target;
+    key.dataset.state = ""
     const keyValue = key.textContent.trim();
     const displayValue = display.textContent.trim();
     const type = key.dataset.type
@@ -15,7 +16,9 @@
    
 
     //? clear button
-    if (type == "clear"){ 
+    if (type == "clear"){
+        calculator.dataset.firstNumber = "0"
+        calculator.dataset.previousKeyType = ""
         display.textContent = '0';
         key.dataset.state = ''
     }
@@ -29,8 +32,15 @@
         else{
             display.textContent = displayValue+keyValue;
         }
+        
     }
-   
+    //if decimal
+    if(type==="decimal"){
+       if (!display.textContent.includes('.')){
+        display.textContent = displayValue+keyValue;
+       }
+    }
+    
     //operator?
     if (type === "operator"){
         //allow only one operator at a time
@@ -52,7 +62,7 @@
     //equal sign?
     if (type==="equal"){
         //calculation
-        const firstNumber = calculator.dataset.firstNumber
+        let firstNumber = calculator.dataset.firstNumber
         const operator = calculator.dataset.operator
         const secondNumber = displayValue
         if (secondNumber != "" && firstNumber !="0"){
@@ -72,6 +82,7 @@
         }else{
             display.textContent="Invalid operation"
         }
+    
         
     }
     // backspace button?
@@ -83,6 +94,7 @@
 
     //checks whether last was a number or operator
     calculator.dataset.previousKeyType = type;
+
     
 });
 
