@@ -11,7 +11,11 @@
     const type = key.dataset.type
     const previousKeyType = calculator.dataset.previousKeyType
 
-    
+    //? clear button
+    if (type == "clear"){ 
+        display.textContent = '0';
+        key.dataset.state = ''
+    }
     //condition to check if its a number
     if (type === 'number'){
         if (displayValue === '0'){
@@ -24,7 +28,8 @@
         }
         
     }
-
+    
+    //operator?
     if (type === "operator"){
         //allow only one operator at a time
         const currentActiveOperator = calculator.querySelector('[data-state="selected"]')
@@ -38,11 +43,13 @@
         calculator.dataset.operator = key.dataset.op
     }
 
+    //equal sign?
     if (type==="equal"){
         //calculation
         const firstNumber = calculator.dataset.firstNumber
         const operator = calculator.dataset.operator
         const secondNumber = displayValue
+        key.dataset.state = ''
         
         //calculation
         display.textContent = calculate(firstNumber, secondNumber, operator)
@@ -63,6 +70,9 @@ function calculate(firstNumber, secondNumber, operator){
     if (operator ==="plus") result= firstNumber + secondNumber
     if (operator ==="minus") result= firstNumber -  secondNumber
     if (operator ==="multiply") result= firstNumber * secondNumber
-    if (operator ==="divide") result= firstNumber / secondNumber
-    return result.toFixed(2)
+    if (operator ==="divide") {
+        result= firstNumber / secondNumber
+        result.toFixed(2)
+    }
+    return result
 }
