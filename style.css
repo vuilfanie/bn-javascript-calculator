@@ -1,34 +1,53 @@
+@font-face {
+  font-family: 'Blade Runner Movie Font';
+  src: url('Font/BLADRMF.TTF')
+}
+
 :root {
     --font-size: 1.2rem;
     --bg-key-color: #dbd9d9;
     --calc-padding: 10px;
     --calc-border-radius: 10px;
+    --txt-color: #ffffff;
   }
 
 html {
+  font-family: 'Blade Runner Movie Font';
   box-sizing: border-box;
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
-  background-color: #3f7ab1;
+  display: flex;
+  margin: 0;
+  height: 100%;
+  background-image: url(Images/bg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  justify-content: center;
 }
 
+
 section {
-    margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .calculator__heading {
     display: block;
     text-align: center;
-    font-size: 5.2rem;
+    font-size: 12rem;
     margin-bottom: 2rem;
+    color: var(--txt-color);
 }
 
 .calculator__display,
 .calculator__history {
-  color: #000408;
-  background-color: var(--bg-key-color);
+  color: var(--txt-color);
   border: 1px solid #cccaca;
   border-radius: 0.5rem;
   text-align: right;
@@ -40,17 +59,16 @@ section {
 }
 
 .calculator__display {
-  font-size: 2rem;
+  font-size: 9rem;
 }
 
 .calculator__history {
-  font-size: 1.2rem;
+  font-size: 5rem;
 }
 
 .calculator__btn-value {
-  background-color: var(--bg-key-color);
-  color: #000000;
-  font-size: 2rem;
+  color: #ffffff;
+  font-size: 9rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,7 +79,6 @@ section {
 }
   
   .calculator__btn-value:hover {
-    background-color: #8a9aaf;
     color: var(--txt-color);
  }
   
@@ -71,15 +88,19 @@ section {
   
 .calculator__grid {
   margin: 0 auto;
-  background-color: #e5e2e2;
   border-radius: 0.5rem;
   padding: 2rem;
   width: 80%;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
 
+  background: hsla(0, 0%, 100%, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsla(0, 0%, 100%, 0.2);
+
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 3rem 5rem repeat(5, 7rem);
+  grid-template-rows: 12rem 13rem repeat(5, 13rem);
   grid-gap: 0.5rem;
   grid-template-areas:
     "history history history history"
@@ -105,10 +126,10 @@ section {
 
 @media only screen and (min-width: 31.25em) {
   .calculator__grid {
-    width: 40rem;
+    width: 86rem;
   }
 
   .calculator__display {
-    font-size: 2.8rem;
+    font-size: 9rem;
   }
 }
