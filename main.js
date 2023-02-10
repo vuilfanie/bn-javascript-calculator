@@ -8,6 +8,9 @@ class Calculator {
     this.prevOperator = null;
     this.reset = false;
     this.percentage = false;
+    document.querySelector('.backspace').addEventListener('click', event=>{
+      this.backspace()
+    })
   }
 
   // F) f) Parse values passed into the calculator and return float with 15 decimal places.
