@@ -10,12 +10,12 @@ class Calculator {
       this.percentage = false;
     }
   
-    // Parse values passed into the calculator and return float with 15 decimal places.
+    // F) f) Parse values passed into the calculator and return float with 15 decimal places.
     parse(val) {
       return parseFloat(val.toFixed(15));
     }
   
-    // Perform calculation
+    // A) & B) Perform calculation
     doCalc(op, curVal, secVal, operator = null) {
       const calculation = {
         "+": (curVal, secVal) => this.parse(curVal + secVal),
@@ -29,17 +29,18 @@ class Calculator {
         : calculation[op](parseFloat(curVal), parseFloat(secVal));
     }
   
-    // set display value to the value passed in and then returns the value.
+    // E) a) set display value to the value passed in and then returns the value.
     dispatch(val) {
       this.dispVal = val;
       return val;
     }
   
-    // set history array to the value passed
+    // E) set history array to the value passed
     dispatchHistory(val) {
       return (this.history = val ? [...this.history, val] : []);
     }
   
+    // E) b)
     // updates the history display to the value passed 
     // check if value passed is greater than 0, 
     // and if it is, it joins all of the values 
@@ -50,7 +51,7 @@ class Calculator {
         val.length > 0 ? val.join(" ") : "&nbsp;";
     }
   
-    // reset calculator to origin
+    // F) e) reset calculator to origin
     resetCalculator() {
       this.curVal = null;
       this.secVal = null;
@@ -67,7 +68,7 @@ class Calculator {
       return String(val).length <= 23;
     }
   
-    // checks if the value passed in contains a period
+    // G) checks if the value passed in contains a period
     allowPeriod(val) {
       return String(val).indexOf(".") !== -1;
     }
@@ -88,7 +89,7 @@ class Calculator {
           if (this.curVal && !this.allowInput(this.curVal)) {
             return this.dispatch(this.curVal);
           }
-          // check if period is allowed
+          // G) check if period is allowed
           if (val === "." && this.allowPeriod(this.curVal)) {
             return this.dispatch(this.curVal);
           }
@@ -100,7 +101,7 @@ class Calculator {
           if (this.secVal && !this.allowInput(this.secVal)) {
             return this.dispatch(this.secVal);
           }
-          // check if period is allowed
+          // G) check if period is allowed
           if (val === "." && this.allowPeriod(this.secVal)) {
             return this.dispatch(this.secVal);
           }
@@ -127,7 +128,7 @@ class Calculator {
           this.curVal = 0;
         }    
 
-        // history update
+        // F) a) history update
         if (this.curVal && !this.secVal) {
           this.dispatchHistory(this.curVal);
           this.dispatchHistory(val);
@@ -142,13 +143,13 @@ class Calculator {
         this.operator = val;
   
   
-        // assignment opertaion
+        // F) b) assignment opertaion
       } else if (val === "=") {
         if (!this.curVal && !this.secVal) {
           return this.dispVal || 0;
         }
   
-        // store previous operator
+        // F) a) store previous operator
         this.prevOperator = this.prevOperator ? this.prevOperator : this.operator;
   
         if (this.secVal) {
@@ -213,6 +214,7 @@ class Calculator {
       }
     };
   
+    // D) 
     init();
   
     const getInput = val => {
@@ -236,6 +238,7 @@ class Calculator {
   
     const keyMap = new Map();
   
+    // I)
     // numpad keys
     // anything higher than 400 is a custom keyCode for shift
     // key code values https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
@@ -269,7 +272,7 @@ class Calculator {
       keyMap.set(key.charCodeAt(0), key);
     }
   
-    //  Keyboard events
+    //  I) Keyboard events
     function onKeyDown(e) {
       if (e.shiftKey) {
         console.log(e.keyCode);
