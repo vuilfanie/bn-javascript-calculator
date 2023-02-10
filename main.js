@@ -78,16 +78,23 @@ class Calculator {
 
   // backspace function
   backspace() {
-    if (this.operator === "=") {
-      this.resetCalculator();
-    } else if (this.secVal !== null) {
-      this.secVal = this.secVal.slice(0, -1);
-      this.dispatch(this.secVal || "0");
-    } else {
-      this.curVal = this.curVal.slice(0, -1);
-      this.dispatch(this.curVal || "0");
-    }
-  }  
+    if(this.dispVal != null && this.history!=[]){
+      if (this.operator === "=") {
+        this.resetCalculator();
+      } else if (this.secVal !== null) {
+        this.secVal = this.secVal.slice(0, -1);
+        this.dispatch(this.secVal || "0");
+      } else {
+        this.curVal = this.curVal.slice(0, -1);
+        this.dispatch(this.curVal || "0");
+      }
+      if (this.dispVal === "0" || this.dispVal === null) {
+        this.history.pop()
+        this.updateHistory([]);
+        this.resetCalculator()
+      }
+    }  
+  }
 
   // main function "process" 
   process(val) {
