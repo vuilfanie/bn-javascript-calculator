@@ -9,6 +9,7 @@ The Javanator is an all-in-one calculator created by Syed, Mark, Connor, Andrew,
 * Simple and intuitive user interface
 * Supports basic arithmetic operations (addition, subtraction, multiplication, division)
 * Ability to save and recall calculations and results
+* Keyboard support
 
 ## Getting Started
 
