@@ -6,6 +6,7 @@ class Calculator {
     this.history = [];
     this.operator = null;
     this.prevOperator = null;
+    this.allowOp = null;
     this.reset = false;
     this.percentage = false;
     document.querySelector('.backspace').addEventListener('click', event=>{
@@ -83,6 +84,7 @@ backspace() {
   }
 process(val) {
   if (val >= 0 || val <= 9 || val === ".") {
+    this.allowOp = true;
     if (!this.curVal && val === ".") {
       return 0;
     }
@@ -119,11 +121,14 @@ process(val) {
       this.reset = false;
     }
   } else if (val === "+" || val === "-" || val === "x" || val === "÷") {
-
+    if(!this.allowOp){
+      return
+    }
     if (this.operator === "=") {
       this.operator = val;
       this.reset = true;
-    }
+      this.allowOp = null;
+    } 
 
     else if (this.curVal && this.secVal) {
       this.curVal = this.dispatch(
@@ -146,6 +151,7 @@ process(val) {
 
     this.prevOperator = null;
     this.operator = val;
+    this.allowOp= null;
 
   } else if (val === "=") {
     if (!this.curVal && !this.secVal) {
