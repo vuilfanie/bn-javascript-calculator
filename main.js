@@ -68,7 +68,7 @@ backspace() {
   } else if (this.curVal) {
     this.curVal = this.curVal.slice(0, -1);
     this.dispatch(this.curVal);
-  } else if (!this.secVal && !this.curVal) {
+  if (!this.secVal && !this.curVal) {
     this.history.pop();
     this.updateHistory(this.history);
   }
@@ -76,12 +76,14 @@ backspace() {
 
 process(val) {
     if (val >= 0 || val <= 9 || val === ".") {
+      this.operator = null
       if (!this.curVal && val === ".") {
         return 0;
       }
 
       if (this.operator === "=") {
         this.resetCalculator();
+        this.operator = null;
       }
 
       if (!this.operator) {
@@ -112,7 +114,7 @@ process(val) {
         this.reset = false;
       }
     } else if (["+", "-", "x", "÷", "="].includes(val)) {
-      
+      this.operator = val;
       if (this.operator === "=") {
         this.operator = val;
         this.reset = true;
