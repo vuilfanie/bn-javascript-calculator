@@ -8,6 +8,9 @@ class Calculator {
       this.prevOperator = null;
       this.reset = false;
       this.percentage = false;
+      document.querySelector('.backspace').addEventListener('click', () => {
+        this.backspace();
+      });
     }
 
 doCalc(op, curVal, secVal, operator = null) {
@@ -71,6 +74,9 @@ backspace() {
 }
 
 process(val) {
+    if (this.operator && ['+', '-', 'x', '÷'].includes(val)) {
+      return;
+    }
     if (val >= 0 || val <= 9 || val === ".") {
       if (!this.curVal && val === ".") {
         return 0;
@@ -107,7 +113,7 @@ process(val) {
         
         this.reset = false;
       }
-    } else if (val === "+" || val === "-" || val === "x" || val === "÷") {
+    } else if (["+", "-", "x", "÷", "="].includes(val)) {
       
       if (this.operator === "=") {
         this.operator = val;
