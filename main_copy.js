@@ -65,12 +65,23 @@ class Calculator {
   
     // check if value passed is less than or equal to 23
     allowInput(val) {
-      return String(val).length <= 23;
+      return String(val).length <= 13;
     }
   
     // G) checks if the value passed in contains a period
     allowPeriod(val) {
       return String(val).indexOf(".") !== -1;
+    }
+
+    // backspace function
+    backspace() {
+      if (this.secVal) {
+        this.secVal = this.secVal.slice(0, -1);
+        this.dispatch(this.secVal);
+      } else if (this.curVal) {
+        this.curVal = this.curVal.slice(0, -1);
+        this.dispatch(this.curVal);
+      }
     }
   
     // main function "process" 
@@ -200,6 +211,8 @@ class Calculator {
       } else if (val === "C") {
         this.resetCalculator();
         this.updateHistory(this.history);
+      } else if (val === "backspace") {
+        this.backspace();
       }
       console.log(this);
       return this.dispVal || 0;
