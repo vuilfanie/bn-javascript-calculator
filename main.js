@@ -11,6 +11,7 @@ class Calculator {
       document.querySelector('.backspace').addEventListener('click', () => {
         this.backspace();
       });
+      
     }
 
 doCalc(op, curVal, secVal, operator = null) {
@@ -67,10 +68,13 @@ backspace() {
   if (this.secVal) {
     this.secVal = this.secVal.slice(0, -1);
     this.dispatch(this.secVal);
+    this.history.pop();
   } else if (this.curVal) {
     this.curVal = this.curVal.slice(0, -1);
     this.dispatch(this.curVal);
+    this.history.pop();
   }
+  this.updateHistory(this.history);
 }
 
 process(val) {
@@ -226,6 +230,7 @@ els.forEach(el =>
     getInput(val);
   })
 );
+
 
 const keys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "C"];
 
