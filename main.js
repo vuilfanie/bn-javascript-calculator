@@ -8,9 +8,7 @@ class Calculator {
       this.prevOperator = null;
       this.reset = false;
       this.percentage = false;
-      document.querySelector('.backspace').addEventListener('click', () => {
-        this.backspace();
-      });
+      
     }
 
 doCalc(op, curVal, secVal, operator = null) {
@@ -70,13 +68,14 @@ backspace() {
   } else if (this.curVal) {
     this.curVal = this.curVal.slice(0, -1);
     this.dispatch(this.curVal);
+  } else if (!this.secVal || !this.curVal){
+    this.history.pop();
+    this.updateHistory(this.history);
   }
+  
 }
 
 process(val) {
-    if (this.operator && ['+', '-', 'x', '÷'].includes(val)) {
-      return;
-    }
     if (val >= 0 || val <= 9 || val === ".") {
       if (!this.curVal && val === ".") {
         return 0;
@@ -226,6 +225,7 @@ els.forEach(el =>
     getInput(val);
   })
 );
+
 
 const keys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "C"];
 
