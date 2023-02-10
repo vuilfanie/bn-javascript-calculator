@@ -68,11 +68,10 @@ backspace() {
   } else if (this.curVal) {
     this.curVal = this.curVal.slice(0, -1);
     this.dispatch(this.curVal);
-  } else if (!this.secVal || !this.curVal){
+  } else if (!this.secVal && !this.curVal) {
     this.history.pop();
     this.updateHistory(this.history);
   }
-  
 }
 
 process(val) {
