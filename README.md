@@ -1,6 +1,6 @@
 # The Javanator
 
-The Javanator is an all-in-one calculator created by Syed, Mark, Connor, Andrew, and Jim using HTML, CSS and Javascript. This calculator can solve all of your math problems with ease!
+The Javanator is an all-in-one calculator created by Syed, Mark, Connor and Andrew using HTML, CSS and Javascript. This calculator can solve all of your math problems with ease!
 
 # Live URL
 
