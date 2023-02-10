@@ -73,6 +73,7 @@ backspace() {
     this.updateHistory(this.history);
   }
 }
+}
 
 process(val) {
     if (val >= 0 || val <= 9 || val === ".") {
@@ -200,6 +201,7 @@ process(val) {
     return this.dispVal || 0;
   }
 }
+
 
 (function() {
   const state = {};
