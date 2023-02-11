@@ -82,6 +82,7 @@ backspace() {
       }
     }  
   }
+  
 process(val) {
   if (val >= 0 || val <= 9 || val === ".") {
     this.allowOp = true;
