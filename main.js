@@ -207,12 +207,15 @@ process(val) {
       this.backspace();
     }
 
-    console.log(this);
     return this.dispVal || 0;
   }
 }
 
-(function () {
+
+
+
+
+(function main() {
   const state = {};
   const init = () => {
     if (!state.calculator) {
@@ -274,7 +277,6 @@ for (const key of keys) {
 
 function onKeyDown(e) {
   if (e.shiftKey) {
-    console.log(e.keyCode);
     switch (e.keyCode) {
       case 16:
         break;
