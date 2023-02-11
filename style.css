@@ -60,10 +60,12 @@ section {
 
 .calculator__display {
   font-size: var(--font-size-9);
+  grid-area: display;
 }
 
 .calculator__history {
   font-size: 5rem;
+  grid-area: history;
 }
 
 .calculator__btn-value {
@@ -106,14 +108,6 @@ section {
     "main main main main"
     "main main main main"
     "main main main main";
-}
-
-.calculator__history {
-  grid-area: history;
-}
-
-.calculator__display {
-  grid-area: display;
 }
 
 .period {
