@@ -19,7 +19,14 @@ doCalc(op, curVal, secVal, operator = null) {
     "+": (curVal, secVal) => this.parse(curVal + secVal),
     "-": (curVal, secVal) => this.parse(curVal - secVal),
     x: (curVal, secVal) => this.parse(curVal * secVal),
-    "÷": (curVal, secVal) => this.parse(curVal / secVal),
+    "÷": (curVal, secVal) => {
+      if (secVal == 0) {
+        alert("Cannot divide by 0");
+        this.resetCalculator()
+        return 0;
+      }
+      return this.parse(curVal / secVal);
+    }
   };
 
   return operator
@@ -50,6 +57,7 @@ resetCalculator() {
   this.dispVal = null;
   this.history = [];
   this.reset = false;
+  console.clear()
 }
 
 parse(val) {
