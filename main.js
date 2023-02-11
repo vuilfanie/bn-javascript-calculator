@@ -274,7 +274,16 @@ for (const key of keys) {
   keyMap.set(key.charCodeAt(0), key);
 }
 
-function onKeyDown() {
+window.addEventListener("keydown", ev => onKeyDown(ev));
+window.addEventListener("keyup", ev => onKeyUp(ev));
+document.querySelector('.backspace').addEventListener('click', event=>{
+  this.backspace()
+})
+
+
+
+
+function onKeyDown(e) {
   if (e.shiftKey) {
     switch (e.keyCode) {
       case 16:
@@ -303,7 +312,8 @@ function onKeyDown() {
   }
 }
 
-function onKeyUp() {
+
+function onKeyUp(e) {
   if (keyMap.get(e.keyCode)) {
     if (state.shiftKey) {
       document
@@ -317,17 +327,4 @@ function onKeyUp() {
       .classList.remove("btn__keypress");
   }
 }
-
-window.addEventListener("keydown", onKeyDown);
-window.addEventListener("keyup", onKeyUp);
-document.querySelector('.backspace').addEventListener('click', event=>{
-  this.backspace()
-})
-
-
-
-
-
-
-
 ;
