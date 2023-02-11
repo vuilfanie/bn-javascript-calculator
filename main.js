@@ -6,11 +6,10 @@ class Calculator {
     this.history = [];
     this.operator = null;
     this.prevOperator = null;
+    this.allowOp = null;
     this.reset = false;
     this.percentage = false;
-    document.querySelector('.backspace').addEventListener('click', event=>{
-      this.backspace()
-    })
+    
   }
 
 doCalc(op, curVal, secVal, operator = null) {
@@ -83,6 +82,7 @@ backspace() {
   }
 process(val) {
   if (val >= 0 || val <= 9 || val === ".") {
+    this.allowOp = true;
     if (!this.curVal && val === ".") {
       return 0;
     }
@@ -119,11 +119,14 @@ process(val) {
       this.reset = false;
     }
   } else if (val === "+" || val === "-" || val === "x" || val === "÷") {
-
+    if(!this.allowOp){
+      return
+    }
     if (this.operator === "=") {
       this.operator = val;
       this.reset = true;
-    }
+      this.allowOp = null;
+    } 
 
     else if (this.curVal && this.secVal) {
       this.curVal = this.dispatch(
@@ -146,6 +149,7 @@ process(val) {
 
     this.prevOperator = null;
     this.operator = val;
+    this.allowOp= null;
 
   } else if (val === "=") {
     if (!this.curVal && !this.secVal) {
@@ -203,18 +207,17 @@ process(val) {
       this.backspace();
     }
 
-    console.log(this);
     return this.dispVal || 0;
   }
 }
 
-(function () {
-  const state = {};
-  const init = () => {
-    if (!state.calculator) {
-      state.calculator = new Calculator();
-    }
-  };
+//main code
+const state = {};
+const init = () => {
+  if (!state.calculator) {
+    state.calculator = new Calculator();
+  }
+};
 
 init();
 
@@ -268,9 +271,17 @@ for (const key of keys) {
   keyMap.set(key.charCodeAt(0), key);
 }
 
+window.addEventListener("keydown", ev => onKeyDown(ev));
+window.addEventListener("keyup", ev => onKeyUp(ev));
+document.querySelector('.backspace').addEventListener('click', event=>{
+  this.backspace()
+})
+
+
+
+
 function onKeyDown(e) {
   if (e.shiftKey) {
-    console.log(e.keyCode);
     switch (e.keyCode) {
       case 16:
         break;
@@ -298,6 +309,7 @@ function onKeyDown(e) {
   }
 }
 
+
 function onKeyUp(e) {
   if (keyMap.get(e.keyCode)) {
     if (state.shiftKey) {
@@ -312,8 +324,4 @@ function onKeyUp(e) {
       .classList.remove("btn__keypress");
   }
 }
-
-window.addEventListener("keydown", onKeyDown);
-window.addEventListener("keyup", onKeyUp);
-
-})();
+;
