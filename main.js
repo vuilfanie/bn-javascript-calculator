@@ -9,9 +9,7 @@ class Calculator {
     this.allowOp = null;
     this.reset = false;
     this.percentage = false;
-    document.querySelector('.backspace').addEventListener('click', event=>{
-      this.backspace()
-    })
+    
   }
 
 doCalc(op, curVal, secVal, operator = null) {
@@ -321,5 +319,8 @@ function onKeyUp(e) {
 
 window.addEventListener("keydown", onKeyDown);
 window.addEventListener("keyup", onKeyUp);
+document.querySelector('.backspace').addEventListener('click', event=>{
+  this.backspace()
+})
 
 })();
