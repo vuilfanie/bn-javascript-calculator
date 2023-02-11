@@ -211,17 +211,13 @@ process(val) {
   }
 }
 
-
-
-
-
-(function main() {
-  const state = {};
-  const init = () => {
-    if (!state.calculator) {
-      state.calculator = new Calculator();
-    }
-  };
+//main code
+const state = {};
+const init = () => {
+  if (!state.calculator) {
+    state.calculator = new Calculator();
+  }
+};
 
 init();
 
@@ -275,6 +271,15 @@ for (const key of keys) {
   keyMap.set(key.charCodeAt(0), key);
 }
 
+window.addEventListener("keydown", ev => onKeyDown(ev));
+window.addEventListener("keyup", ev => onKeyUp(ev));
+document.querySelector('.backspace').addEventListener('click', event=>{
+  this.backspace()
+})
+
+
+
+
 function onKeyDown(e) {
   if (e.shiftKey) {
     switch (e.keyCode) {
@@ -304,6 +309,7 @@ function onKeyDown(e) {
   }
 }
 
+
 function onKeyUp(e) {
   if (keyMap.get(e.keyCode)) {
     if (state.shiftKey) {
@@ -318,11 +324,4 @@ function onKeyUp(e) {
       .classList.remove("btn__keypress");
   }
 }
-
-window.addEventListener("keydown", onKeyDown);
-window.addEventListener("keyup", onKeyUp);
-document.querySelector('.backspace').addEventListener('click', event=>{
-  this.backspace()
-})
-
-})();
+;
