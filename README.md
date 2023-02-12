@@ -3,7 +3,7 @@
 The Javanator is an all-in-one calculator created by Syed, Mark, Connor and Andrew using HTML, CSS and Javascript. This calculator can solve all of your math problems with ease!
 
 # Live URL
-
+https://vuilfanie.github.io/bn-javascript-calculator/
 
 ## Features
 * Simple and intuitive user interface
