@@ -8,7 +8,6 @@ class Calculator {
     this.prevOperator = null;
     this.allowOp = null;
     this.reset = false;
-    this.percentage = false;
     document.querySelector('.backspace').addEventListener('click', event=>{
       this.backspace()
     })
@@ -53,7 +52,6 @@ resetCalculator() {
   this.secVal = null;
   this.operator = null;
   this.prevOperator = null;
-  this.percentage = null;
   this.dispVal = null;
   this.history = [];
   this.reset = false;
